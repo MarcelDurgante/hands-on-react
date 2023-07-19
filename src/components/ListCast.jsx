@@ -13,8 +13,6 @@ const ListCast = ({ onChoice }) => {
         fetchCast();
     }, [])
 
-    console.log(cast.map(item => item.slug).join(", "));
-
     return (
         <div style={{
             display: 'grid',

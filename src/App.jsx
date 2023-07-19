@@ -9,8 +9,6 @@ function App() {
   const [memberInfo, setMemberInfo] = useState([]);
   const name = 'StarGazers';
 
-  console.log(typeof memberInfo);
-
   return (
     <main className='container'>
       <hgroup>
