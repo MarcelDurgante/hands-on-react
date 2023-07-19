@@ -2,7 +2,8 @@ import { useState } from 'react';
 
 const Support = () => {
 
-    const [count, setCount] = useState(0);
+    const [supportCount, setSupportCount] = useState(0);
+    const [unsupportCount, setUnsupportCount] = useState(0);
 
     return (
         <div style={{
@@ -10,24 +11,12 @@ const Support = () => {
             justifyContent: 'center',
         }}>
             <button className='outline'
-                onClick={() => setCount(count + 1)}>
-                {(() => {
-                    if (count === 0) {
-                        return 'Click to support!'
-                    } else {
-                        return `Liked:  ${count} times`;
-                    }
-                })()}
+                onClick={() => setSupportCount(supportCount + 1)}>
+                {supportCount === 0 ? 'Click to support !' : `Supported ${supportCount} times`}
             </button>
             <button className='secondary outline'
-                onClick={() => setCount(count - 1)}>
-                {(() => {
-                    if (count === 0) {
-                        return 'Click to unsupport :('
-                    } else {
-                        return `Disliked:  ${count} times`;
-                    }
-                })()}
+                onClick={() => setUnsupportCount(unsupportCount - 1)}>
+                {unsupportCount === 0 ? 'Click to unsupport :( ' : `Unsupported: ${unsupportCount} times`}
             </button>
         </div>
     )
