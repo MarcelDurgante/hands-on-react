@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
-
-const Modal = ({ member, handleClose }) => {
+const Modal = ({ member, handleClose, handleChange }) => {
     return (
         <dialog id='modal-member' open>
             <article>
@@ -23,8 +21,19 @@ const Modal = ({ member, handleClose }) => {
                         <hgroup>
                             <h1>{member.name}</h1>
                             <p>{member.bio}</p>
+                            <hgroup>
+                                <a className='outline' href='#' role='button' onClick={() => {
+                                    // 'Number(member.id) - 1', is to make sure 'member.id' is a number
+                                    handleChange(Number(member.id) - 1)
+                                }}>previous</a>
+                                <a className='outline' href='#' role='button' onClick={() => {
+                                    // 'Number(member.id) - 1', is to make sure 'member.id' is a number
+                                    handleChange(Number(member.id) + 1)
+                                }}>next</a>
+                            </hgroup>
                         </hgroup>
                     </div>
+                    {/* <button className='outline' onClick={() => { onChoice(member.id + 1) }}></button> */}
                 </hgroup>
             </article>
         </dialog>
