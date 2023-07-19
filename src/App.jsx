@@ -8,15 +8,18 @@ function App() {
   const [memberInfo, setMemberInfo] = useState([]);
   const name = 'StarGazers';
 
+  console.log(typeof memberInfo);
+
   return (
     <main className='container'>
       <hgroup>
         <img src='/images/group.svg' alt='StarGazers Group' />
         <Welcome name={name} />
         <p>Members of an <b>intergalactic alliance</b> paving the way for peace and benevolence among all species. They are known for their enthusiasm for science, for their love of fun, and their dedication to education.</p>
-        <ListCast />
+        <ListCast onChoice={(info) => { setMemberInfo(info) }} />
         <Support />
-        {memberInfo &&
+        {/* if using only 'memberInfo' it returns undefined first time and render an empty div. With 'memberInfo.id' it works */}
+        {(memberInfo.id ?
           <article>
             <hgroup>
               <div>
@@ -26,7 +29,7 @@ function App() {
               </div>
             </hgroup>
           </article>
-        }
+          : (<div></div>))}
       </hgroup>
     </main>
   )
