@@ -9,10 +9,26 @@ const Support = () => {
             display: 'flex',
             justifyContent: 'center',
         }}>
-            <hgroup>
-                <h2>Supported: {count}</h2>
-                <button className='outline' onClick={() => setCount(count + 1)}>Click to support</button>
-            </hgroup>
+            <button className='outline'
+                onClick={() => setCount(count + 1)}>
+                {(() => {
+                    if (count === 0) {
+                        return 'Click to support!'
+                    } else {
+                        return `Liked:  ${count} times`;
+                    }
+                })()}
+            </button>
+            <button className='secondary outline'
+                onClick={() => setCount(count - 1)}>
+                {(() => {
+                    if (count === 0) {
+                        return 'Click to unsupport :('
+                    } else {
+                        return `Disliked:  ${count} times`;
+                    }
+                })()}
+            </button>
         </div>
     )
 }
