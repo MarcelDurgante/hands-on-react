@@ -23,8 +23,10 @@ const ListCast = () => {
         }}>
             {
                 cast.map(member => (
-                    /* the thumbnails ( small squared images ) end in '_tn.svg'. If used only '.svg' the image are full body. */
-                    <img src={`images/${member.slug}_tn.svg`} alt={member.name} key={member.id} />
+                    <a key={member.id} data-tooltip={member.name} >
+                        {/* the thumbnails ( small squared images ) end in '_tn.svg'. If used only '.svg' the image are full body.  */}
+                        <img src={`images/${member.slug}_tn.svg`} alt={member.name} key={member.id} />
+                    </a>
                 ))
             }
         </div>
