@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ListCast from './components/ListCast';
 import Support from './components/Support';
 import Welcome from "./components/Welcome"
+import Modal from './components/Modal';
 
 function App() {
 
@@ -18,20 +19,12 @@ function App() {
         <p>Members of an <b>intergalactic alliance</b> paving the way for peace and benevolence among all species. They are known for their enthusiasm for science, for their love of fun, and their dedication to education.</p>
         <ListCast onChoice={(info) => { setMemberInfo(info) }} />
         <Support />
-        {/* if using only 'memberInfo' it returns undefined first time and render an empty div. With 'memberInfo.id' it works */}
-        {(memberInfo.id ?
-          <article>
-            <hgroup>
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                <img style={{ width: '200px' }} src={`images/${memberInfo.slug}.svg`} alt={memberInfo.name} />
-                <hgroup>
-                  <h1>{memberInfo.name}</h1>
-                  <p>{memberInfo.bio}</p>
-                </hgroup>
-              </div>
-            </hgroup>
-          </article>
-          : (''))}
+        {/* if using only 'memberInfo' it returns undefined first time and render an empty div. With 'memberInfo.id' it works.
+        Also, in the Modal component below I could not set member info to null nor undefined as it cause an error when closing the modal ( Uncaught TypeError: Cannot read properties of null/undefined (reading 'id'))
+         */}
+        {(memberInfo.id &&
+          <Modal member={memberInfo} handleClose={() => { setMemberInfo([]) }} />
+        )}
       </hgroup>
     </main>
   )
