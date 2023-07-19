@@ -30,6 +30,4 @@ const ListCast = () => {
     )
 }
 
-public\images\aneirin - 11.svg
-
 export default ListCast;
