@@ -1,18 +1,5 @@
-import { useState, useEffect } from 'react'
-
-// eslint-disable-next-line react/prop-types
-const ListCast = ({ onChoice }) => {
-    const [cast, setCast] = useState([]);
-
-    const fetchCast = async () => {
-        const response = await fetch('cast.json');
-        setCast(await response.json());
-    }
-
-    useEffect(() => {
-        fetchCast();
-    }, [])
-
+/* eslint-disable react/prop-types */
+const ListCast = ({ cast, onChoice }) => {
     return (
         <div style={{
             display: 'grid',
